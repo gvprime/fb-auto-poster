@@ -1,0 +1,23 @@
+# /etc/systemd/system/fb-autoposter-panel.service
+# Panel on 127.0.0.1:8020 (8000/8001 already used by gvprime uvicorn apps).
+# nginx reverse-proxies your subdomain -> this. chmod 600 (holds secrets).
+[Unit]
+Description=FB Autoposter control panel
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/fb-autoposter
+Environment=PANEL_HOST=127.0.0.1
+Environment=PORT=8020
+Environment=PANEL_HTTPS=1
+Environment=PANEL_PASSWORD=CHANGE_ME_STRONG_PASSWORD
+Environment=FB_PAGE_ID=1211759088691986
+Environment=FB_PAGE_ACCESS_TOKEN=
+Environment=FAL_KEY=
+Environment=ANTHROPIC_API_KEY=
+ExecStart=/usr/bin/python3 /home/ubuntu/fb-autoposter/control_panel.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

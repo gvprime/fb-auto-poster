@@ -1,0 +1,32 @@
+# Free scheduler: GitHub Actions cron. ~1 min/run, well inside the free tier.
+name: fb-autopost
+on:
+  schedule:
+    - cron: "0 9 * * *"     # daily 09:00 UTC — adjust to taste
+  workflow_dispatch: {}      # manual trigger button
+
+permissions:
+  contents: write            # to commit updated history.json
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python autoposter.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+      - name: Persist dedupe history
+        run: |
+          git config user.name "autoposter-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add history.json autoposter.log || true
+          git diff --cached --quiet || git commit -m "post: update history"
+          git push

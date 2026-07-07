@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: fb-autoposter-panel
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python control_panel.py
+    envVars:
+      - key: PANEL_PASSWORD
+        sync: false          # set in dashboard - never commit
+      - key: PANEL_HTTPS
+        value: "1"
+      - key: FB_PAGE_ACCESS_TOKEN
+        sync: false
+      - key: FB_PAGE_ID
+        sync: false
+      - key: FAL_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
