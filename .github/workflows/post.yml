@@ -2,8 +2,8 @@
 name: fb-autopost
 on:
   schedule:
-    - cron: "0 9 * * *"     # daily 09:00 UTC — adjust to taste
-  workflow_dispatch: {}      # manual trigger button
+    - cron: "0 9 * * *"     # daily 09:00 UTC
+  workflow_dispatch:         # manual trigger button
 
 permissions:
   contents: write            # to commit updated history.json
