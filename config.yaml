@@ -1,35 +1,24 @@
-topic_criteria: >
-  Practical home gardening tips for beginners in tropical climates. Low-cost,
-  low-effort wins: container gardening, herbs, composting, natural pest control.
-
-caption_style: >
-  Friendly and encouraging, 2-3 short sentences, end with a question, max 3 hashtags.
-
-image_style: >
-  Bright natural lighting, photorealistic, no text or watermarks.
-
+topic_criteria: 'Practical home gardening tips for beginners in tropical climates.
+  Low-cost, low-effort wins: container gardening, herbs, composting, natural pest
+  control.'
+caption_style: Friendly and encouraging, 2-3 short sentences, end with a question,
+  max 3 hashtags.
+image_style: Bright natural lighting, photorealistic, no text or watermarks.
 facebook:
-  page_id: "YOUR_PAGE_ID"
-
-image_model: "fal-ai/flux/schnell"
-image_size: "square_hd"
-
+  page_id: YOUR_PAGE_ID
+image_model: fal-ai/flux/schnell
+image_size: square_hd
 dedupe:
   lookback_days: 60
-
 retries:
   max_attempts: 3
   backoff_seconds: 5
-
 manual_content:
-  topic: "Regrow green onions from kitchen scraps"
-  caption: >
-    Stop buying green onions! Pop the root ends in a glass of water on a sunny
-    windowsill and you will have a fresh harvest in about a week. What kitchen
-    scraps have you regrown? #gardeninghacks #urbangarden
-  image_prompt: >
-    Green onion roots regrowing in a clear glass jar of water on a sunny kitchen
-    windowsill, fresh green shoots, home gardening
-
+  topic: Coffee grounds as a natural pest deterrent
+  caption: 'Don''t toss those used coffee grounds! Sprinkle them around your potted
+    plants to keep ants and slugs away, chemical-free. What''s your favourite natural
+    garden hack? #gardeninghacks #urbangarden'
+  image_prompt: Used coffee grounds sprinkled in a ring around a potted plant on a
+    sunny balcony, closeup, home gardening
 dry_run: true
 mock_apis: true
